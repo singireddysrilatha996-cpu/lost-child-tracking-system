@@ -1,29 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Case Status | SafeTrace</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="case-status.css">
 </head>
 <body>
 
 <nav class="navbar">
     <div class="logo">SafeTrace</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Report Case</a></li>
+        <li><a href="#">Case Status</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
 </nav>
 
 <div class="page-container">
-    <h1>Case Status</h1>
-    <p>Check current status of missing child cases.</p>
+    <h1>Missing Child Case Status</h1>
+    <p class="subtitle">Track and monitor reported cases in real-time</p>
 
-    <div class="card">
-        <h3>Case ID: ST1023</h3>
-        <p>Status: <span class="missing">Missing</span></p>
+    <!-- Search -->
+    <div class="search-box">
+        <input type="text" placeholder="Enter Case ID (e.g., ST1023)">
+        <button>Search</button>
     </div>
 
-    <div class="card">
-        <h3>Case ID: ST1045</h3>
-        <p>Status: <span class="found">Found</span></p>
+    <!-- Case Cards -->
+    <div class="case-grid">
+
+        <div class="card">
+            <h3>Case ID: ST1023</h3>
+            <p>Child Name: Rohan Kumar</p>
+            <p>Last Seen: Hyderabad</p>
+            <span class="status missing">Missing</span>
+        </div>
+
+        <div class="card">
+            <h3>Case ID: ST1045</h3>
+            <p>Child Name: Ananya Singh</p>
+            <p>Last Seen: Chennai</p>
+            <span class="status found">Found</span>
+        </div>
+
+        <div class="card">
+            <h3>Case ID: ST1089</h3>
+            <p>Child Name: Arjun Patel</p>
+            <p>Last Seen: Bengaluru</p>
+            <span class="status investigating">Under Investigation</span>
+        </div>
+
     </div>
 </div>
+
+<footer>
+    <p>© 2026 SafeTrace | Helping reunite families</p>
+</footer>
 
 </body>
 </html>
