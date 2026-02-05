@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authority Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+        }
+
+        /* Header */
+        .header {
+            background-color: #203a43;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .logout {
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background-color: #e85a28;
+        }
+
+        /* Main container */
+        .container {
+            padding: 30px;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .section h3 {
+            margin-top: 0;
+            color: #203a43;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        table th {
+            background-color: #e8eef2;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h2>Lost Child Tracking System – Authority Dashboard</h2>
+    <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+
+    <!-- LOST CHILD REPORTS -->
+    <div class="section">
+        <h3>Reported Lost Children</h3>
+
+        <table>
+            <tr>
+                <th>Case ID</th>
+                <th>Child Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Last Seen Location</th>
+                <th>Date Reported</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>LC101</td>
+                <td>Rahul</td>
+                <td>7</td>
+                <td>Male</td>
+                <td>Secunderabad</td>
+                <td>02-02-2026</td>
+                <td>
+                    <select>
+                        <option>Investigating</option>
+                        <option>Found</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>LC102</td>
+                <td>Anjali</td>
+                <td>5</td>
+                <td>Female</td>
+                <td>LB Nagar</td>
+                <td>01-02-2026</td>
+                <td>
+                    <select>
+                        <option>Investigating</option>
+                        <option>Found</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- PUBLIC SIGHTINGS -->
+    <div class="section">
+        <h3>Public Sightings</h3>
+
+        <table>
+            <tr>
+                <th>Reporter ID</th>
+                <th>Location Seen</th>
+                <th>Date & Time</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td>USR102</td>
+                <td>Ameerpet</td>
+                <td>02-02-2026 | 6:30 PM</td>
+                <td>Child matching description near bus stop</td>
+            </tr>
+
+            <tr>
+                <td>USR115</td>
+                <td>Kukatpally</td>
+                <td>01-02-2026 | 4:00 PM</td>
+                <td>Child seen with a woman</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    function logout() {
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>

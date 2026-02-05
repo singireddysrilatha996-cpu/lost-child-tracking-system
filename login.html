@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeTrace | Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: Arial, sans-serif;
+        }
+
+        .login-box {
+            width: 380px;
+            background: #1e2a33;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            text-align: center;
+            color: white;
+        }
+
+        .login-box h1 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .login-box select,
+        .login-box input,
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .login-box button {
+            background: #ff6b35;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background: #e85a28;
+        }
+
+        .location-box {
+            text-align: left;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .location-box input {
+            width: auto;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h1>SafeTrace</h1>
+    <p>Secure role-based login</p>
+
+    <form onsubmit="loginUser(event)">
+
+        <!-- ROLE -->
+        <select id="role" required>
+            <option value="">Select Role</option>
+            <option value="parent">Parent / Guardian</option>
+            <option value="public">Public User</option>
+            <option value="authority">Authority</option>
+        </select>
+
+        <!-- NAME / EMAIL -->
+        <input 
+            type="text" 
+            placeholder="Full Name / Email"
+            required
+        >
+
+        <!-- PHONE -->
+        <input 
+            type="tel" 
+            placeholder="Phone Number"
+            maxlength="10"
+            oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+            required
+        >
+
+        <!-- PASSWORD -->
+        <input 
+            type="password" 
+            placeholder="Password (6 characters)"
+            minlength="6" 
+            maxlength="6" 
+            required
+        >
+
+        <!-- ENABLE LOCATION -->
+        <div class="location-box">
+            <input type="checkbox" id="enableLocation">
+            <label for="enableLocation">Enable Location</label>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+let latitude = null;
+let longitude = null;
+
+document.getElementById("enableLocation").addEventListener("change", function () {
+    if (this.checked) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    latitude = pos.coords.latitude;
+                    longitude = pos.coords.longitude;
+                    alert("Location enabled successfully");
+                    console.log(latitude, longitude);
+                },
+                () => {
+                    alert("Location permission denied");
+                    this.checked = false;
+                }
+            );
+        } else {
+            alert("Geolocation not supported");
+            this.checked = false;
+        }
+    }
+});
+
+function loginUser(event) {
+    event.preventDefault();
+
+    const role = document.getElementById("role").value;
+
+    // location data ready for backend later
+    console.log("Location:", latitude, longitude);
+
+    if (role === "parent") {
+        window.location.href = "report.html";
+    } 
+    else if (role === "public") {
+        window.location.href = "sightings.html";
+    } 
+    else if (role === "authority") {
+        window.location.href = "authority.html";
+    }
+}
+</script>
+
+</body>
+</html>
